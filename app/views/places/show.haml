@@ -2,7 +2,9 @@
   %tr
     %th place
     %th visits
-  - @places_and_visited_count.each do |place, visits|
+    %th duration
+  - @places_and_visited_count.each do |place, visits, duration|
     %tr
       %td= place
       %td= visits
+      %td= distance_of_time_in_words duration
