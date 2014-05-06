@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140506002501) do
+ActiveRecord::Schema.define(:version => 20140506005110) do
 
   create_table "places", :force => true do |t|
-    t.string "Date"
-    t.string "Name"
-    t.string "Start"
-    t.string "End"
-    t.string "Duration"
-    t.string "Latitude"
-    t.string "Longitude"
-    t.string "Category"
-    t.string "Link"
+    t.string "date"
+    t.string "name"
+    t.string "start"
+    t.string "end"
+    t.string "duration"
+    t.string "latitude"
+    t.string "longitude"
+    t.string "category"
+    t.string "link"
   end
 
 end

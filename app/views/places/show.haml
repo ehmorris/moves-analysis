@@ -1,8 +1,8 @@
 %table
   %tr
     %th place
-    %th times
-  - 4.times do
+    %th visits
+  - @places_and_visited_count.each do |place, visits|
     %tr
-      %td test
-      %td 200
+      %td= place
+      %td= visits
