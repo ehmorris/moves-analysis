@@ -1,0 +1,14 @@
+@import 'normalize';
+@import 'bourbon';
+
+table {
+  border: 1px solid #ccc;
+  border-width: 1px 0 0 1px;
+  margin: 1rem;
+
+  td, th {
+    border: 1px solid #ccc;
+    border-width: 0 1px 1px 0;
+    padding: .5rem;
+  }
+}

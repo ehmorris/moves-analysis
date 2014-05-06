@@ -1,0 +1,15 @@
+%section
+  %h3 word by neighborhood
+  %table
+    - @common_word_by_neighborhood.each do |neighborhood, word|
+      %tr
+        %th= neighborhood
+        %td= word
+
+%section
+  %h3 crimes by neighborhood
+  %table
+    - @crimes_by_neighborhood.each do |neighborhood, count|
+      %tr
+        %th= neighborhood
+        %td= count

@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  database: boston_arrested_words_database_development
+  pool: 5
+  timeout: 5000
+
+test:
+  adapter: postgresql
+  database: boston_arrested_words_database_testing
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: postgresql
+  database: boston_arrested_words_database_production
+  pool: 5
+  timeout: 5000
