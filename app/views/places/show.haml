@@ -6,5 +6,5 @@
   - @places_and_visited_count.each do |place, visits, duration|
     %tr
       %td= place
-      %td= visits
-      %td= distance_of_time_in_words duration
+      %td{ 'data-visit' => "#{visits}" }= visits
+      %td{ 'data-duration' => "#{duration}" }= distance_of_time_in_words duration
