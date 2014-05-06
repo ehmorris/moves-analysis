@@ -1,3 +1,3 @@
 BostonArrestedWords::Application.routes.draw do
-  root :to => 'crimes#show'
+  root :to => 'places#show'
 end
