@@ -1,14 +1,31 @@
 @import 'normalize';
 @import 'bourbon';
 
-table {
+body {
+  padding: 2rem;
+}
+
+.sort {
+  background: #ccc;
+  cursor: pointer;
+  padding: .5rem;
+}
+
+ul {
+  box-sizing: border-box;
+  display: table;
+  width: 100%;
+}
+
+li {
   border: 1px solid #ccc;
   border-width: 1px 0 0 1px;
-  margin: 1rem;
+  display: table-row;
 
-  td, th {
+  span {
     border: 1px solid #ccc;
     border-width: 0 1px 1px 0;
+    display: table-cell;
     padding: .5rem;
   }
 }

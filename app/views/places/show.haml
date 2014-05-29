@@ -1,14 +1,17 @@
-%table
-  %tr
-    %th place
-    %th total number of visits
-    %th total time spent there
-    %th median time spent there
-    %th average time spent there
+#places-list
+
+  %input.search
+  %span.sort{ 'data-sort' => 'place' } Sort by place
+  %span.sort{ 'data-sort' => 'visits' } Sort by visits
+  %span.sort{ 'data-sort' => 'duration' } Sort by duration
+  %span.sort{ 'data-sort' => 'median' } Sort by median
+  %span.sort{ 'data-sort' => 'average' } Sort by average
+
+  %ul.list
   - @places.each do |place, visits, duration, median, average|
-    %tr
-      %td= place
-      %td{ 'data-visits' => "#{visits}" }= visits
-      %td{ 'data-duration' => "#{duration}" }= distance_of_time_in_words duration
-      %td{ 'data-median' => "#{median}" }= distance_of_time_in_words median
-      %td{ 'data-average' => "#{average}" }= distance_of_time_in_words average
+    %li
+      %span.place= place
+      %span.visits{ 'data-visits' => "#{visits}" }= visits
+      %span.duration{ 'data-duration' => "#{duration}" }= distance_of_time_in_words duration
+      %span.median{ 'data-median' => "#{median}" }= distance_of_time_in_words median
+      %span.average{ 'data-average' => "#{average}" }= distance_of_time_in_words average
