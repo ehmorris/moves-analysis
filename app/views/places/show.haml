@@ -1,10 +1,14 @@
 %table
   %tr
     %th place
-    %th visits
-    %th duration
-  - @places_and_visited_count.each do |place, visits, duration|
+    %th total number of visits
+    %th total time spent there
+    %th median time spent there
+    %th average time spent there
+  - @places.each do |place, visits, duration, median, average|
     %tr
       %td= place
-      %td{ 'data-visit' => "#{visits}" }= visits
+      %td{ 'data-visits' => "#{visits}" }= visits
       %td{ 'data-duration' => "#{duration}" }= distance_of_time_in_words duration
+      %td{ 'data-median' => "#{median}" }= distance_of_time_in_words median
+      %td{ 'data-average' => "#{average}" }= distance_of_time_in_words average
