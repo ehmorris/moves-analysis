@@ -1,12 +1,12 @@
 #places-list
-
-  %input.search
-  %span.sort{ 'data-sort' => 'place' } Sort by place
-  %span.sort{ 'data-sort' => 'visits' } Sort by visits
-  %span.sort{ 'data-sort' => 'duration' } Sort by duration
-  %span.sort{ 'data-sort' => 'median' } Sort by median
-  %span.sort{ 'data-sort' => 'average' } Sort by average
-
+  %input.search{ 'placeholder' => 'Search for any parameter' }
+  %ul.headers
+    %li
+      %span.sort{ 'data-sort' => 'place' } Place
+      %span.sort{ 'data-sort' => 'visits' } Visits
+      %span.sort{ 'data-sort' => 'duration' } Duration
+      %span.sort{ 'data-sort' => 'median' } Median
+      %span.sort{ 'data-sort' => 'average' } Average
   %ul.list
     - @places.each do |place, visits, duration, median, average|
       %li
