@@ -32,7 +32,20 @@ li {
     cursor: pointer;
     font-weight: bold;
     padding: .5rem;
+    position: relative;
     @include user-select(none);
+
+    &.asc, &.desc {
+      background: #ccc;
+
+      &:after {
+        @include position(absolute, .55rem .5rem 0 0);
+        color: #888;
+      }
+    }
+
+    &.asc:after { content: "\25BC"; }
+    &.desc:after { content: "\25B2"; }
   }
 
   span {
