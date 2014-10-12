@@ -11,7 +11,7 @@
     - @places.each do |place, visits, duration, median, average|
       %li
         %span.place= place
-        %span.visits{ 'data-sort-value' => "#{visits}" }= visits
-        %span.duration{ 'data-sort-value' => "#{duration}" }= distance_of_time_in_words duration
-        %span.median{ 'data-sort-value' => "#{median}" }= distance_of_time_in_words median
-        %span.average{ 'data-sort-value' => "#{average}" }= distance_of_time_in_words average
+        %span.visits= visits
+        %span.duration{ 'data-human-value' => distance_of_time_in_words(duration) }= duration
+        %span.median{ 'data-human-value' => distance_of_time_in_words(median) }= median
+        %span.average{ 'data-human-value' => distance_of_time_in_words(average) }= average

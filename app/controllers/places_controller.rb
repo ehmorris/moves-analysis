@@ -23,18 +23,18 @@ class PlacesController < ApplicationController
       total_duration += place.duration.to_i
     end
 
-    total_duration
+    total_duration.round(2)
   end
 
   def median_time_spent_in_place place_name
     all_durations = array_of_all_durations(place_name).sort
     len = all_durations.length
-    (all_durations[(len - 1) / 2] + all_durations[len / 2]) / 2.0
+    ((all_durations[(len - 1) / 2] + all_durations[len / 2]) / 2.0).round(2)
   end
 
   def average_time_spent_in_place place_name
     all_durations = array_of_all_durations(place_name)
-    all_durations.inject{ |sum, el| sum + el }.to_f / all_durations.size
+    (all_durations.inject{ |sum, el| sum + el }.to_f / all_durations.size).round(2)
   end
 
   def array_of_all_durations place_name

@@ -1,9 +1,7 @@
 @import 'normalize';
 @import 'bourbon';
 
-body {
-  padding: 2rem;
-}
+body { padding: 2rem; }
 
 .search {
   margin: 0 0 1rem 0;
@@ -21,9 +19,7 @@ ul {
   padding: 0;
   width: 100%;
 
-  &.headers {
-    border: none;
-  }
+  &.headers { border: none; }
 }
 
 li {
@@ -43,7 +39,18 @@ li {
     border: 1px solid #ccc;
     border-width: 0 1px 1px 0;
     display: table-cell;
-    padding: .75rem;
     width: 20%;
+    padding: .75rem;
+  }
+}
+
+.list span {
+  &.duration, &.median, &.average {
+    color: #ccc;
+
+    &:before {
+      color: #000;
+      content: attr(data-human-value) ' ';
+    }
   }
 }
