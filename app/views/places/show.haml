@@ -1,4 +1,8 @@
 = link_to 'Back', root_path
 
 %h1= @place.name
-%p= "Most commonly coming from \"#{@coming_from}\""
+
+- if @coming_from.nil?
+  %p You never came from the same place twice
+- else
+  %p= "Most commonly coming from \"#{@coming_from}\""

@@ -24,7 +24,12 @@ class PlacesController < ApplicationController
       prev_names.push prev_name if place.name.eql? place_name
     end
 
-    prev_names.group_by{|n|n}.values.max_by(&:size).first
+    most_common_place_and_all_occurances =
+      prev_names.group_by{|n|n}.values.max_by(&:size)
+
+    if most_common_place_and_all_occurances.count > 1
+      most_common_place_and_all_occurances.first
+    end
   end
 
   def places_and_visited_count
