@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-BostonArrestedWords::Application.load_tasks
+MovesAnalysis::Application.load_tasks

@@ -1,0 +1,17 @@
+#places-list
+  %input.search{ 'placeholder' => 'Search for any parameter' }
+  %ul.headers
+    %li
+      %span.sort{ 'data-sort' => 'place' } Place Name
+      %span.sort{ 'data-sort' => 'visits' } Total Visits
+      %span.sort{ 'data-sort' => 'duration' } Total Duration
+      %span.sort{ 'data-sort' => 'median' } Median Visit Duration
+      %span.sort{ 'data-sort' => 'average' } Average Visit Duration
+  %ul.list
+    - @places.each do |place, visits, duration, median, average, start|
+      %li
+        %span.place= link_to place, place_path(place)
+        %span.visits= visits
+        %span.duration{ 'data-human-value' => distance_of_time_in_words(duration) }= duration
+        %span.median{ 'data-human-value' => distance_of_time_in_words(median) }= median
+        %span.average{ 'data-human-value' => distance_of_time_in_words(average) }= average

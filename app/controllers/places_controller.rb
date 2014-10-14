@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-  def show
+  def index
     @places = places_and_visited_count
     @places.each do |place|
       place[2] = total_time_spent_in_place(place[0])
@@ -8,7 +8,24 @@ class PlacesController < ApplicationController
     end
   end
 
+  def show
+    @place = Place.find_by_name(params[:id])
+    @coming_from = most_common_prev_place(@place.name)
+  end
+
   private
+
+  def most_common_prev_place place_name
+    prev_names = []
+    prev_name = nil
+
+    Place.all.each do |place|
+      prev_name = place.name unless place.name.eql? place_name
+      prev_names.push prev_name if place.name.eql? place_name
+    end
+
+    prev_names.group_by{|n|n}.values.max_by(&:size).first
+  end
 
   def places_and_visited_count
     places_and_visited_count = Place.group(:name).count
