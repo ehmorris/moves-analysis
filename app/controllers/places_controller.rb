@@ -10,26 +10,48 @@ class PlacesController < ApplicationController
 
   def show
     @place = Place.find_by_name(params[:id])
-    @coming_from = most_common_prev_place(@place.name)
+
+    next_prev = most_common_next_prev_place(@place.name)
+    @coming_from = next_prev['prev']
+    @left_for = next_prev['next']
   end
 
   private
 
-  def most_common_prev_place place_name
+  def most_common_next_prev_place place_name
     prev_names = []
-    prev_name = nil
+    next_names = []
+    prev_name  = nil
+    next_name  = nil
 
-    Place.all.each do |place|
-      prev_name = place.name unless place.name.eql? place_name
-      prev_names.push prev_name if place.name.eql? place_name
+    Place.all.each_with_index do |place, index|
+      if index > 0 && prev_name.nil?
+        next_names.push place.name
+        prev_name = place.name
+      end
+
+      if place.name.eql? place_name
+        prev_names.push prev_name
+        prev_name = nil
+      else
+        prev_name = place.name
+      end
     end
 
-    most_common_place_and_all_occurances =
-      prev_names.group_by{|n|n}.values.max_by(&:size)
+    most_common_prev_place = most_common_value(prev_names, place_name)
+    most_common_next_place = most_common_value(next_names, place_name)
 
-    if most_common_place_and_all_occurances.count > 1
-      most_common_place_and_all_occurances.first
-    end
+    { 'prev' => most_common_prev_place,
+      'next' => most_common_next_place }
+  end
+
+  def most_common_value values, disqualified_word
+    values.delete(disqualified_word)
+    most_common_value_and_all_occurances = 
+      values.group_by{|x|x}.values.max_by(&:size)
+
+    { 'place' => most_common_value_and_all_occurances.first,
+      'count' => most_common_value_and_all_occurances.count }
   end
 
   def places_and_visited_count

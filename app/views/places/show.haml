@@ -2,7 +2,12 @@
 
 %h1= @place.name
 
-- if @coming_from.nil?
+- if @coming_from['count'] <= 1
   %p You never came from the same place twice
 - else
-  %p= "Most commonly coming from \"#{@coming_from}\""
+  %p= "Most commonly coming from \"#{@coming_from['place']}\""
+
+- if @left_for['count'] <= 1
+  %p You never left for the same place twice
+- else
+  %p= "Most commonly left for \"#{@left_for['place']}\""
