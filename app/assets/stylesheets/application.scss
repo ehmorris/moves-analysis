@@ -67,3 +67,21 @@ li {
     }
   }
 }
+
+.mapinfo {
+  background: #fff;
+  padding: .5rem 1rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  z-index: 2;
+}
+
+.gmap {
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index: 1;
+}
